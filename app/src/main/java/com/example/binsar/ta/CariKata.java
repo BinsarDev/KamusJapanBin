@@ -1,15 +1,20 @@
 package com.example.binsar.ta;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.binsar.ta.adapter.KamusBaseAdapter;
+import com.example.binsar.ta.model.Kamus;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class CariKata extends AppCompatActivity {
 
@@ -24,6 +29,10 @@ public class CariKata extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cari_kata);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         db = new DBHelper(this);
 
@@ -47,9 +56,24 @@ public class CariKata extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-               mDataset =  db.getAllKamus(mCari.getText().toString(), true);
+               mDataset =  db.getAllKamus(mCari.getText().toString(), getIntent().getBooleanExtra("reverse", true));
                mAdapter.swapData(mDataset);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

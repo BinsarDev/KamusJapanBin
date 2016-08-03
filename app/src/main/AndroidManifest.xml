@@ -7,23 +7,23 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Design.NoActionBar" >
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme">
 
+        <activity android:name=".CariKata" />
+
+        <activity
+            android:name=".ActivityWebView"
+            android:label="@string/title_activity_webview"/>
+
+        <activity
+            android:name=".Main"
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TataBahasa"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Kanji" />
-        <activity android:name=".CariKata" />
-        <activity android:name=".Kana" />
-        <activity android:name=".Percakapan" />
-        <activity android:name=".Tentang" />
-        <activity android:name=".WebViewCeu"></activity>
+
     </application>
 
 </manifest>

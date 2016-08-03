@@ -1,15 +1,15 @@
-package com.example.binsar.ta;
+package com.example.binsar.ta.adapter;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.security.PublicKey;
+import com.example.binsar.ta.model.Kamus;
+import com.example.binsar.ta.R;
+
 import java.util.ArrayList;
 
 /**

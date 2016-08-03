@@ -1,4 +1,4 @@
-package com.example.binsar.ta;
+package com.example.binsar.ta.model;
 
 /**
  * Created by Binsar on 7/23/2016.

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">TA</string>
     <string name="title_activity_tata_bahasa2">TataBahasa2</string>
+    <string name="title_activity_main">Kamus Indo Jepang</string>
+    <string name="title_activity_webview">Tata Bahasa</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

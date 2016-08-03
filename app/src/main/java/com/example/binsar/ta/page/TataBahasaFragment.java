@@ -1,18 +1,23 @@
-package com.example.binsar.ta;
+package com.example.binsar.ta.page;
+
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.binsar.ta.R;
+import com.example.binsar.ta.ActivityWebView;
 
-import java.util.ArrayList;
-
-public class TataBahasa extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class TataBahasaFragment extends Fragment {
 
     String [] menu = {
             "1. Perkenalan",
@@ -127,21 +132,25 @@ public class TataBahasa extends AppCompatActivity {
 
     };
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tata_bahasa);
+    public TataBahasaFragment() {}
 
-      ListView  listView = (ListView) findViewById(R.id.list_menu);
-      listView.setAdapter(new ArrayAdapter<>(this, R.layout.icon, R.id.icon2, menu));
-      listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-          @Override
-          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              Intent i = new Intent(TataBahasa.this, WebViewCeu.class );
-              i.putExtra("html", html[position]);
-              startActivity(i);
-          }
-      });
-  }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_tata_bahasa, container, false);
+
+        ListView listView = (ListView) v.findViewById(R.id.tata_bahasa_list);
+        listView.setAdapter(new ArrayAdapter<>(getActivity(), R.layout.icon, R.id.icon2, menu));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getActivity(), ActivityWebView.class);
+                i.putExtra("html", html[position]);
+                startActivity(i);
+            }
+        });
+
+        return v;
+    }
+
 }
-
